@@ -27,7 +27,7 @@ if __name__ == '__main__':
 
     # load config
     root_path = get_root_path()
-    config_path = os.path.join(root_path, 'xbot/configs/crosswoz_all_context_nlu_slot.json')
+    config_path = os.path.join(root_path, 'xbot/config/crosswoz_all_context_nlu_slot.json')
     config = json.load(open(config_path))
     data_path = config['data_dir']
     data_path = os.path.join(root_path, data_path)
@@ -85,7 +85,7 @@ if __name__ == '__main__':
                                                     num_training_steps=config['model']['max_step'])
     else:
         for n, p in model.named_parameters():
-            if 'bert' in n:
+            if 'bert_policy' in n:
                 p.requires_grad = False
         optimizer = torch.optim.Adam(filter(lambda p: p.requires_grad, model.parameters()),
                                      lr=config['model']['learning_rate'])

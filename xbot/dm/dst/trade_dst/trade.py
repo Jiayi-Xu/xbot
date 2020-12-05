@@ -394,6 +394,7 @@ if __name__ == '__main__':
     # download dials file
     if not os.path.exists(dials_path):
         download_from_url('http://qiw2jpwfc.hn-bkt.clouddn.com/dev_dials.json', dials_path)
+
     with open(os.path.join(data_path, 'dev_dials.json'), 'r', encoding='utf8') as f:
         dials = json.load(f)
         example = random.choice(dials)

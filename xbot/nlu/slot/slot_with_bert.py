@@ -3,7 +3,7 @@ import json
 from typing import Any
 
 from xbot.util.nlu_util import NLU
-from xbot.gl import DEFAULT_MODEL_PATH
+from xbot.constants import DEFAULT_MODEL_PATH
 from xbot.util.path import get_root_path
 from xbot.util.download import download_from_url
 from data.crosswoz.data_process.nlu_slot_dataloader import Dataloader
@@ -100,14 +100,14 @@ class SlotWithBertPredictor(NLU):
     """NLU slot Extraction with Bert 预测器"""
 
     default_model_config = 'nlu/crosswoz_all_context_nlu_slot.json'
-    default_model_name = 'pytorch-slot-with-bert.pt'
+    default_model_name = 'pytorch-slot-with-bert_policy.pt'
     default_model_url = 'http://qiw2jpwfc.hn-bkt.clouddn.com/pytorch-slot-with-bert.pt'
 
     def __init__(self):
         # path
         root_path = get_root_path()
         config_file = os.path.join(root_path,
-                                   'xbot/configs/{}'.format(SlotWithBertPredictor.default_model_config))
+                                   'xbot/config/{}'.format(SlotWithBertPredictor.default_model_config))
 
         # load config
         config = json.load(open(config_file))
